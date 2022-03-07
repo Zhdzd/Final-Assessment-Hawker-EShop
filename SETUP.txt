@@ -1,6 +1,6 @@
 INSTRUCTIONS ON DEPLOYING APP
 
-URL OF APPLICATION: https://vespa-hawker.herokuapp.com/ 
+URL OF APPLICATION: https://vespa-online-hawker.herokuapp.com/
 
 
 DEPLOYING TO DATABASE:
