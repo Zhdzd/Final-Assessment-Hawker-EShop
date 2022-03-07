@@ -1,0 +1,42 @@
+INSTRUCTIONS ON DEPLOYING APP
+
+URL OF APPLICATION: https://vespa-hawker.herokuapp.com/ 
+
+
+DEPLOYING TO DATABASE:
+1. Deployed MYSQL database to Digital Ocean
+2. Created new database in Digital Ocean
+3. Received connection details from Digital Ocean (username, password, host, port etc.)
+4. Go to MYSQL Workbench and set up new MYSQL connection using the connection details provide in step 3.
+5. Created new Schema in the new MYSQL connection that was created.
+6. Go to Spring Boot and assign environment variable to URL, Username and Password to the connection details.
+7. Change the default database name in the URL to the newly created schema name. 
+
+
+OKTA OAuth2.0 Setup:
+1. In developer.okta.com webpage, signed up an account and created 2 applications
+2. First application is designed to cater for the front-end user log in widget of type Single Page App [in okta website]
+3. Configured the Sign-in/Sign-out redirect URIs to the deployed heroku URL
+4. Second application is designed to secure the back end of the APP. [Application type in okta is web]
+5. Configured the redirect URIs to deployed Heroku URL
+6. Configured the trusted origins for the Okta API to trust the deployed heroku URL.
+
+==========================
+Environment Variable Names
+==========================
+
+MySQL Database Environment Variables:
+-------------------------
+SPRING_DATASOURCE_URL
+SPRING_DATASOURCE_USERNAME
+SPRING_DATASOURCE_PASSWORD
+
+OKTA OAuth2.0 Environment Variables:
+-------------------------------------
+OKTA_OAUTH2_CLIENT_ID
+OKTA_OAUTH2_CLIENT_SECRET
+OKTA_OAUTH2_ISSUER
+
+
+
+

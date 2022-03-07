@@ -1,0 +1,31 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+          <div class="row">
+            <!--- loop over collection of products -->
+            <div *ngFor="let p of products" class="col-md-3">
+                <div class="product-box">
+
+                    <a routerLink="/products/{{p.id}}">
+                        <img src="{{p.imageUrl}}" class="img-responsive">
+                    </a>
+                    <br>
+                    <a routerLink="/products/{{p.id}}">
+                        <h1>{{p.name}}</h1>
+                    </a>
+                    <br>
+                    {{p.description}}
+                    <div class="price">{{p.price | currency}}</div>
+                    <button (click)="addToCart(p)"
+                     class="btn btn-primary btn-sm">Add to cart</button>
+                </div>
+            </div>
+
+            <!--for products that does not exist-->
+            <div *ngIf="products?.length == 0" class="alert alert-danger col-md-12" role="alert">
+              Product not found.
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

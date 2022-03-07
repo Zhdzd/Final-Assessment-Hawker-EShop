@@ -1,0 +1,30 @@
+<div class="main-content">
+ <div class="section-content section-content-p30">
+   <div class="container-fluid">
+     <h3>Order History</h3>
+     <div *ngIf="userHistory.length > 0">
+
+       <table class="table table-bordered">
+         <tr>
+           <th width="20%">Order Number</th>
+
+           <th width="20%">Total Price</th>
+         </tr>
+         <tr *ngFor="let u of userHistory">
+
+
+           <td>{{u.orderTrackingNumber}}</td>
+
+           <td>{{u.totalPrice | currency}}</td>
+
+         </tr>
+       </table>
+     </div>
+     <div *ngIf="userHistory.length == 0"
+     class="alert alert-warning col-md-12"
+     role="alert"
+     > You do not have any past orders.</div>
+   </div>
+ </div>
+
+</div>

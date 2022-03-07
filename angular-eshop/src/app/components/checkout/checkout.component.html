@@ -1,0 +1,274 @@
+<div class="main-content page-m">
+  <div class="section-content section-content">
+    <div class="container-fluid">
+      <form [formGroup]="form">
+
+        <!--customer form group-->
+        <div formGroupName="customer" class="form-area">
+          <h3>Customer</h3>
+
+          <!--firstname-->
+          <div class="row">
+            <div class="col-md-2"><label>First Name</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="firstName" type="text" />
+
+                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger mt-1">
+                  <div *ngIf="firstName.errors?.['required']">First Name is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--lastname-->
+          <div class="row">
+            <div class="col-md-2"><label>Last Name</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="lastName" type="text" />
+                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger mt-1">
+                  <div *ngIf="lastName.errors?.['required']">Last Name is required</div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+          <!--email-->
+          <div class="row">
+            <div class="col-md-2"><label>Email Address</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="email" type="text" />
+
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger mt-1">
+                  <div *ngIf="email.errors?.['required']">Email is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--shipping information-->
+        <!--shipping form group-->
+        <div formGroupName="deliveryAddress" class="form-area">
+          <h3>Delivery Address</h3>
+
+
+          <!--street-->
+          <div class="row">
+            <div class="col-md-2"><label>Street</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="street" type="text" />
+
+                <div *ngIf="deliveryAddressStreet.invalid && (deliveryAddressStreet.dirty || deliveryAddressStreet.touched)" class="alert alert-danger mt-1">
+                  <div *ngIf="deliveryAddressStreet.errors?.['required']">Shipping Address Street is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--city-->
+          <div class="row">
+            <div class="col-md-2"><label>City</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="city" type="text" />
+
+                <div *ngIf="deliveryAddressCity.invalid && (deliveryAddressCity.dirty || deliveryAddressCity.touched)" class="alert alert-danger mt-1">
+                  <div *ngIf="deliveryAddressCity.errors?.['required']">Shipping Address city is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--unit number-->
+          <div class="row">
+            <div class="col-md-2"><label>Unit-No.</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="unitNumber" type="text" />
+              </div>
+            </div>
+          </div>
+          <!--postal code-->
+          <div class="row">
+            <div class="col-md-2"><label>Postal Code</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="postalCode" type="text" />
+
+
+                <div *ngIf="deliveryAddressPostalCode.invalid && (deliveryAddressPostalCode.dirty || deliveryAddressPostalCode.touched)" class="alert alert-danger mt-1">
+                  <div *ngIf="deliveryAddressPostalCode.errors?.['required']">Shipping Address Postal Code is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <!--check box if shipping and billing addres is the same-->
+        <div class="input-space">
+          <label class="au-checkbox">
+            <input type="checkbox" (change)="copyAddress($event)">
+            <span class="au-checkmark"></span>Billing address same as Shipping Address
+          </label>
+        </div>
+
+        <!--Billing address-->
+        <div formGroupName="billingAddress" class="form-area">
+          <h3>Billing Address</h3>
+
+
+          <!--street-->
+          <div class="row">
+            <div class="col-md-2"><label>Street</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="street" type="text" />
+              </div>
+            </div>
+          </div>
+          <!--city-->
+          <div class="row">
+            <div class="col-md-2"><label>City</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="city" type="text" />
+              </div>
+            </div>
+          </div>
+          <!--unit number-->
+          <div class="row">
+            <div class="col-md-2"><label>Unit-No.</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="unitNumber" type="text" />
+              </div>
+            </div>
+          </div>
+          <!--postal code-->
+          <div class="row">
+            <div class="col-md-2"><label>Postal Code</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="postalCode" type="text" />
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+        </div>
+
+        <!--credit card-->
+
+          <div formGroupName="creditCard" class="form-area">
+          <h3>Credit Card</h3>
+
+          <!--card typw-->
+          <div class="row">
+            <div class="col-md-2"><label>Card Type</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <select formControlName="cardType">
+                    <option>Visa</option>
+                    <option>Master</option>
+                    <option>Amex</option>
+                  </select>
+
+                  <div *ngIf="creditCardType.invalid && (creditCardType.dirty || creditCardType.touched)" class="alert alert-danger mt-1">
+                    <div *ngIf="deliveryAddressPostalCode.errors?.['required']">Card Type is required</div>
+                  </div>
+
+              </div>
+            </div>
+          </div>
+          <!--Name on card-->
+          <div class="row">
+            <div class="col-md-2"><label>Name on Card</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="nameOnCard" type="text" />
+
+                <div *ngIf="nameOnCard.invalid && (nameOnCard.dirty || nameOnCard.touched)" class="alert alert-danger mt-1">
+                  <div *ngIf="deliveryAddressPostalCode.errors?.['required']">Name on Card is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--card number-->
+          <div class="row">
+            <div class="col-md-2"><label>Card Number</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="cardNumber" type="text" />
+
+
+                <div *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)" class="alert alert-danger mt-1">
+                  <div *ngIf="deliveryAddressPostalCode.errors?.['required']">Card number required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--security code-->
+          <div class="row">
+            <div class="col-md-2"><label>Security code</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="securityCode" type="text" />
+
+                <div *ngIf="securityCode.invalid && (securityCode.dirty || securityCode.touched)" class="alert alert-danger mt-1">
+                  <div *ngIf="securityCode.errors?.['required']">Security Code required</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Month</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <select formControlName="expirationMonth">
+                    <option *ngFor="let m of creditCardMonth">{{m}}</option>
+                  </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Year</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <select formControlName="expirationYear">
+                    <option *ngFor="let y of creditCardYear">{{y}}</option>
+                  </select>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!--order details-->
+        <div class="form-area">
+          <h3>Review Your Payment</h3>
+
+
+          <h4>Total Price: {{totalPrice | currency}}</h4>
+        </div>
+
+
+
+
+        <!--submit button-->
+        <div class="text-center">
+          <button type="submit" (click)="onSubmit()" class="btn btn-success">Purchase</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
