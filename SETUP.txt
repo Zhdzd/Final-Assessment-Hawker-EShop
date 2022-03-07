@@ -7,10 +7,11 @@ DEPLOYING TO DATABASE:
 1. Deployed MYSQL database to Digital Ocean
 2. Created new database in Digital Ocean
 3. Received connection details from Digital Ocean (username, password, host, port etc.)
-4. Go to MYSQL Workbench and set up new MYSQL connection using the connection details provide in step 3.
+4. Go to MYSQL Workbench and set up new MYSQL connection (doadmin) using the connection details provide in step 3.
 5. Created new Schema in the new MYSQL connection that was created.
-6. Go to Spring Boot and assign environment variable to URL, Username and Password to the connection details.
-7. Change the default database name in the URL to the newly created schema name. 
+6. Created new user and extend schema privileges to the user. Create a new connection to be used for the application.
+7. Go to Spring Boot and assign environment variable to URL, Username and Password to the connection details.
+8. Change the default database name in the URL to the newly created schema name. 
 
 
 OKTA OAuth2.0 Setup:
